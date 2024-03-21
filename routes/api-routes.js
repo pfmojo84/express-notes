@@ -5,7 +5,8 @@ const path = require ('path'); //import from node.js for file paths
 const { v4: uuidv4 } = require('uuid'); //generates unique identified
 
 //create get request to read db.json file and implement try/catch blocks to handle potential errors when reading or writing to 'db.json' file
-router.get('/api/notes', async (req, res) => {
+//localhost:3001/api
+router.get('/notes', async (req, res) => {
     try {
         const dbJSON = await fs.promises.readFile('db/db.json', 'utf8'); //read and parse db.json file
         res.json(JSON.parse(dbJSON)); //send the parsed JSON data as the response
@@ -15,7 +16,7 @@ router.get('/api/notes', async (req, res) => {
 });
 
 //create post route to receive new note and save on the request body and add it to the db.json file
-router.post('/api/notes', async (req, res) => {
+router.post('/notes', async (req, res) => {
     try {
         let dbJSON = await fs.promises.readFile('db/db.json', 'utf8');
         dbJSON = JSON.parse(dbJSON);
