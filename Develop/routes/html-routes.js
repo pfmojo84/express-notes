@@ -1,7 +1,8 @@
 //establish required modules
-const router = require('express').Router(); //import the 'router' class from Express
+const express = require('express');
 const path = require('path'); //import the 'path' module from Node.js
 
+const router = express.Router(); //import the 'router' class from Express
 
 //define routes using the router object 
 router.get('/', (req, res) => { //define a route for the root URL '/'
