@@ -4,17 +4,17 @@ const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
 
 //create environment variable port
-const PORT = process.env.port || 3001;
+const PORT = process.env.PORT || 3001;
 
-//triggers express built in method(s) -- double check accuracy
+//triggers express built in method(s)
 const app = express();
 
-//set middleware for parsing json and url-encoded data
-app.use(express.urlencoded({ extended: false})); //clarification needed
-app.use(express.json());
-app.use(express.static('public'));
-app.use(htmlRoutes);
-app.use(apiRoutes);
+//set up middleware functions using app.use()
+app.use(express.urlencoded({ extended: false})); //extended: false indicates that the URL-encoded data will be parsed with the built-in node.js 'querystring' library
+app.use(express.json()); //middleware for parsing JSON data
+app.use(express.static('public')); // Middleware for serving static files in public directory
+app.use(htmlRoutes); //middleware for handling html routes defined in 'html-routes.js'
+app.use(apiRoutes); //middleware for handling api routes defined in 'api-routes.js'
 
 //app listener - initiates the server
 app.listen(PORT, () => {

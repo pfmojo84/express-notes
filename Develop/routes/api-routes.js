@@ -1,27 +1,29 @@
+//establish required modules
 const router = require('express').Router();
-const fs = require ('fs');
-const path = require ('path');
-const { v4: uuidv4 } = require('uuid');
+const fs = require ('fs'); //node.js file system operations
+const path = require ('path'); //import from node.js for file paths
+const { v4: uuidv4 } = require('uuid'); //generates unique identified
 
 //create get request to read db.json file 
 router.get('/api/notes', async (req, res) => {
-    const dbJSON = await JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
-    res.json(dbJSON);
+    const dbJSON = await JSON.parse(fs.readFileSync('db/db.json', 'utf8')); //read and parse db.json file
+    res.json(dbJSON); //send the parsed JSON data as the response
 });
 
 //create post route to receive new note and save on the request body and add it to the db.json file
 router.post('/api/notes', (req, res) => {
     const dbJSON = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
-    //create body for new note
+    //create new note object using data from the request body with a generated unique identified
     const newNote = {
         title: req.body.title,
         text: req.body.text,
         id: uuidv4(),
     };
-    //push new note to be written on the db.json file
+
+    //add new note to the array of notes in the dbJSON object
     dbJSON.push(newNote);
-    fs.writeFileSync('db/db.json', JSON.stringify(dbJSON));
-    res.json(dbJSON);
+    fs.writeFileSync('db/db.json', JSON.stringify(dbJSON)); // write the updated dbJSON object back to the db.json file
+    res.json(dbJSON); // send the updated dbJSON object as the response
 });
 
 module.exports = router;
