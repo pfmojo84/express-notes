@@ -3,9 +3,6 @@ const express = require ('express');
 const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
 
-//create environment variable port
-const PORT = process.env.PORT || 3001;
-
 //triggers express built in method(s)
 const app = express();
 
@@ -15,6 +12,9 @@ app.use(express.json()); //middleware for parsing JSON data
 app.use(express.static('public')); // Middleware for serving static files in public directory
 app.use(htmlRoutes); //middleware for handling html routes defined in 'html-routes.js'
 app.use(apiRoutes); //middleware for handling api routes defined in 'api-routes.js'
+
+//create environment variable port
+const PORT = process.env.PORT || 3001;
 
 //app listener - initiates the server
 app.listen(PORT, () => {

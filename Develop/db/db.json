@@ -1,6 +1,1 @@
-[
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    }
-]
+[{"title":"Pickup Groceries","text":"Dinner for family and lunch for the week","id":"af7107e7-a863-4bad-a781-b52cabb62623"},{"title":"Pickup Groceries","text":"Lunch and dinner for the week","id":"f0fc07ff-c246-4ce4-9269-a997532fcd5f"},{"title":"Chop firewood","text":"Prep for next winter!","id":"9967d14b-1f1e-46db-ba6d-25cb0ba50287"},{"title":"Garden clean up","text":"Spring has sprung!","id":"88d860f4-6e30-4f2c-8ce1-0aee76d1829c"},{"title":"Improve note taker app","text":"Time to do some refractoring!","id":"73957dbe-60a2-424e-9659-94f467c8a718"}]
